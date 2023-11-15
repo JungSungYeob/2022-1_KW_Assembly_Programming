@@ -1,0 +1,102 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             ARMex, CODE, READONLY
+    2 00000000                 ENTRY
+    3 00000000         
+    4 00000000         MAIN
+    5 00000000 E59F002C        LDR              R0, =Array
+    6 00000004 E59F1018        LDR              R1, TEMPADDR1
+    7 00000008         
+    8 00000008 E3A0C009        MOV              R12, #9
+    9 0000000C         
+   10 0000000C         Loop
+   11 0000000C         
+   12 0000000C E7D0200C        LDRB             R2, [R0,R12]
+   13 00000010         
+   14 00000010 E4C12001        STRB             R2, [R1], #1
+   15 00000014         
+   16 00000014 E24CC001        SUB              R12, R12, #1
+   17 00000018         
+   18 00000018 E35C0000        CMP              R12, #0
+   19 0000001C BA000000        BLT              Finish
+   20 00000020         
+   21 00000020 EAFFFFF9        B                Loop
+   22 00000024         
+   23 00000024         Finish
+   24 00000024         
+   25 00000024         
+   26 00000024 00004000 
+                       TEMPADDR1
+                               &                &00004000
+   27 00000028         
+   28 00000028 0A 09 08 
+              07 06 05 
+              04 03 02 
+              01 00    Array   DCB              10,9,8,7,6,5,4,3,2,1,0
+   29 00000033         
+   30 00000033                 END
+              00 00000000 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=ARM9E --apcs=interwork 
+--depend=.\objects\problem2.d -o.\objects\problem2.o -IC:\Keil_v5\ARM\RV31\INC 
+-IC:\Keil_v5\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --predefine="__UVISI
+ON_VERSION SETA 529" --list=.\listings\problem2.lst Problem2.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ARMex 00000000
+
+Symbol: ARMex
+   Definitions
+      At line 1 in file Problem2.s
+   Uses
+      None
+Comment: ARMex unused
+Array 00000028
+
+Symbol: Array
+   Definitions
+      At line 28 in file Problem2.s
+   Uses
+      At line 5 in file Problem2.s
+Comment: Array used once
+Finish 00000024
+
+Symbol: Finish
+   Definitions
+      At line 23 in file Problem2.s
+   Uses
+      At line 19 in file Problem2.s
+Comment: Finish used once
+Loop 0000000C
+
+Symbol: Loop
+   Definitions
+      At line 10 in file Problem2.s
+   Uses
+      At line 21 in file Problem2.s
+Comment: Loop used once
+MAIN 00000000
+
+Symbol: MAIN
+   Definitions
+      At line 4 in file Problem2.s
+   Uses
+      None
+Comment: MAIN unused
+TEMPADDR1 00000024
+
+Symbol: TEMPADDR1
+   Definitions
+      At line 26 in file Problem2.s
+   Uses
+      At line 6 in file Problem2.s
+Comment: TEMPADDR1 used once
+6 symbols
+340 symbols in table

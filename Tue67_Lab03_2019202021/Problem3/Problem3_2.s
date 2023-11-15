@@ -1,0 +1,19 @@
+	AREA ARMex, CODE, READONLY
+		ENTRY
+
+MAIN
+
+	LDR R0, TEMPADDR1 ;Load TEMPADDR1
+	MOV R1, #1;1
+	LSL R2, R1, R1;2
+	LSL R3, R2, R2;8
+	
+	ADD R4, R2, R3;10
+	
+	LSL R5, R4, R1;10*2=20
+	MUL R6, R4, R5;10*20=200
+	
+	STR R6, [R0];store R6's value to R0's address
+	
+TEMPADDR1 & &00004000
+	END

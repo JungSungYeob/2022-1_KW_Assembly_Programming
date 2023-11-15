@@ -1,0 +1,93 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             ARMex, CODE, READONLY
+    2 00000000                 ENTRY
+    3 00000000         
+    4 00000000         MAIN
+    5 00000000         
+    6 00000000 E59F0038        LDR              R0, TEMPADDR1
+    7 00000004 E3A01001        MOV              R1, #1      ;1
+    8 00000008 E1A02111        LSL              R2, R1, R1  ;2
+    9 0000000C E1A03112        LSL              R3, R2, R1  ;4
+   10 00000010 E1A04113        LSL              R4, R3, R1  ;8
+   11 00000014         
+   12 00000014 E0815002        ADD              R5, R1, R2  ;3
+   13 00000018         
+   14 00000018 E0846005        ADD              R6, R4,R5   ;11
+   15 0000001C         
+   16 0000001C E3A07001        MOV              R7, #1
+   17 00000020 E0828004        ADD              R8, R2, R4  ; 10
+   18 00000024         
+   19 00000024         Loop
+   20 00000024 E0899006        ADD              R9, R9, R6  ;
+   21 00000028 E0866002        ADD              R6, R6, R2  ;
+   22 0000002C         
+   23 0000002C E1570008        CMP              R7, R8
+   24 00000030 0A000001        BEQ              Finish
+   25 00000034         
+   26 00000034 E0877001        ADD              R7, R7, R1
+   27 00000038 EAFFFFF9        B                Loop
+   28 0000003C         
+   29 0000003C         Finish
+   30 0000003C E5809000        STR              R9,[R0]
+   31 00000040         
+   32 00000040 00004000 
+                       TEMPADDR1
+                               &                &00004000
+   33 00000044                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=ARM9E --apcs=interwork 
+--depend=.\objects\problem3_1.d -o.\objects\problem3_1.o -IC:\Keil_v5\ARM\RV31\
+INC -IC:\Keil_v5\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --predefine="__U
+VISION_VERSION SETA 529" --list=.\listings\problem3_1.lst Problem3_1.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ARMex 00000000
+
+Symbol: ARMex
+   Definitions
+      At line 1 in file Problem3_1.s
+   Uses
+      None
+Comment: ARMex unused
+Finish 0000003C
+
+Symbol: Finish
+   Definitions
+      At line 29 in file Problem3_1.s
+   Uses
+      At line 24 in file Problem3_1.s
+Comment: Finish used once
+Loop 00000024
+
+Symbol: Loop
+   Definitions
+      At line 19 in file Problem3_1.s
+   Uses
+      At line 27 in file Problem3_1.s
+Comment: Loop used once
+MAIN 00000000
+
+Symbol: MAIN
+   Definitions
+      At line 4 in file Problem3_1.s
+   Uses
+      None
+Comment: MAIN unused
+TEMPADDR1 00000040
+
+Symbol: TEMPADDR1
+   Definitions
+      At line 32 in file Problem3_1.s
+   Uses
+      At line 6 in file Problem3_1.s
+Comment: TEMPADDR1 used once
+5 symbols
+337 symbols in table

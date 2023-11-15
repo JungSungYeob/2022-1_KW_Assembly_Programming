@@ -1,0 +1,63 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             ARMex, CODE, READONLY
+    2 00000000                 ENTRY
+    3 00000000         
+    4 00000000         MAIN
+    5 00000000         
+    6 00000000 E59F0018        LDR              R0, TEMPADDR1
+    7 00000004 E3A01001        MOV              R1, #1
+    8 00000008 E1A02111        LSL              R2, R1, R1  ;2
+    9 0000000C E1A03212        LSL              R3, R2, R2  ;8
+   10 00000010         
+   11 00000010 E0824003        ADD              R4, R2, R3  ;10
+   12 00000014         
+   13 00000014 E1A05114        LSL              R5, R4, R1
+   14 00000018 E0060594        MUL              R6, R4, R5
+   15 0000001C         
+   16 0000001C E5806000        STR              R6, [R0]
+   17 00000020         
+   18 00000020 00004000 
+                       TEMPADDR1
+                               &                &00004000
+   19 00000024                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=ARM9E --apcs=interwork 
+--depend=.\objects\problem3_2.d -o.\objects\problem3_2.o -IC:\Keil_v5\ARM\RV31\
+INC -IC:\Keil_v5\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --predefine="__U
+VISION_VERSION SETA 529" --list=.\listings\problem3_2.lst Problem3_2.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ARMex 00000000
+
+Symbol: ARMex
+   Definitions
+      At line 1 in file Problem3_2.s
+   Uses
+      None
+Comment: ARMex unused
+MAIN 00000000
+
+Symbol: MAIN
+   Definitions
+      At line 4 in file Problem3_2.s
+   Uses
+      None
+Comment: MAIN unused
+TEMPADDR1 00000020
+
+Symbol: TEMPADDR1
+   Definitions
+      At line 18 in file Problem3_2.s
+   Uses
+      At line 6 in file Problem3_2.s
+Comment: TEMPADDR1 used once
+3 symbols
+335 symbols in table
