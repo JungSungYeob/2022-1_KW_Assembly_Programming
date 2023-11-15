@@ -1,0 +1,127 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000 0000000D 
+                       cr      equ              0x0d        ; typedef cr = 0x0d
+                                                            
+    2 00000000         
+    3 00000000                 area             ARMex, CODE, READONLY
+    4 00000000                 entry
+    5 00000000         
+    6 00000000         start
+    7 00000000 E1A00000        NOP
+    8 00000004 E28F0020        ADR              R0, STR1    ; get STR1's addres
+                                                            s to get value
+    9 00000008 E59F1028        LDR              R1, STR2    ; save to STR2's ad
+                                                            dress
+   10 0000000C E1A00000        NOP
+   11 00000010         
+   12 00000010         LOOP
+   13 00000010 E4D02001        LDRB             R2, [R0], #1 ;get R0's 1byte to
+                                                             R2
+   14 00000014 E352000D        CMP              R2, #cr     ; compare R2 and cr
+                                                            (0x0d), if NULL
+   15 00000018 0A000001        BEQ              Finish      ;goto Finish
+   16 0000001C         
+   17 0000001C E4C12001        STRB             R2, [R1], #1 ; //store R2's 1by
+                                                            te to R1 address
+   18 00000020 EAFFFFFA        B                LOOP        ;goto Loop
+   19 00000024         
+   20 00000024         
+   21 00000024         Finish
+   22 00000024 E3A0200D        MOV              R2, #cr     ; ; R2 = cr(0x0d)
+   23 00000028 E4C12001        STRB             R2,[R1],#1  ; store cr 0x0d R3 
+                                                            
+   24 0000002C         ;mov pc,#0
+   25 0000002C         
+   26 0000002C         STR1
+   27 0000002C                 ALIGN
+   28 0000002C 41 53 53 
+              45 4D 42 
+              4C 59 0D         DCB              "ASSEMBLY",cr ;  source in cpy
+   29 00000035         
+   30 00000035         
+   31 00000035 00 00 00 
+              00040000 STR2    &                &00040000   ; save copy data in
+                                                             address
+   32 0000003C                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=ARM9E --apcs=interwork 
+--depend=.\objects\problem1.d -o.\objects\problem1.o -IC:\Keil_v5\ARM\RV31\INC 
+-IC:\Keil_v5\ARM\CMSIS\Include --predefine="__EVAL SETA 1" --predefine="__UVISI
+ON_VERSION SETA 529" --list=.\listings\problem1.lst Problem1.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ARMex 00000000
+
+Symbol: ARMex
+   Definitions
+      At line 3 in file Problem1.s
+   Uses
+      None
+Comment: ARMex unused
+Finish 00000024
+
+Symbol: Finish
+   Definitions
+      At line 21 in file Problem1.s
+   Uses
+      At line 15 in file Problem1.s
+Comment: Finish used once
+LOOP 00000010
+
+Symbol: LOOP
+   Definitions
+      At line 12 in file Problem1.s
+   Uses
+      At line 18 in file Problem1.s
+Comment: LOOP used once
+STR1 0000002C
+
+Symbol: STR1
+   Definitions
+      At line 26 in file Problem1.s
+   Uses
+      At line 8 in file Problem1.s
+Comment: STR1 used once
+STR2 00000038
+
+Symbol: STR2
+   Definitions
+      At line 31 in file Problem1.s
+   Uses
+      At line 9 in file Problem1.s
+Comment: STR2 used once
+start 00000000
+
+Symbol: start
+   Definitions
+      At line 6 in file Problem1.s
+   Uses
+      None
+Comment: start unused
+6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+cr 0000000D
+
+Symbol: cr
+   Definitions
+      At line 1 in file Problem1.s
+   Uses
+      At line 14 in file Problem1.s
+      At line 22 in file Problem1.s
+      At line 28 in file Problem1.s
+
+1 symbol
+339 symbols in table
